@@ -183,7 +183,7 @@
                 <gamma            type="double" rang="[0.0,10.0]"  default="1.0"   length="1">1</gamma>
                 <contrast         type="int"    rang="[0, 1023]"   default="0"     length="1">0</contrast>
                 <saturation       type="int"    rang="[0, 4095]"   default="1024"  length="1">1024</saturation>
-                <sharpness        type="int"    rang="[0, 4095]"   default="900"   length="1">200</sharpness>
+                <sharpness        type="int"    rang="[0, 4095]"   default="900"   length="1">250</sharpness>
                 <sharpness_thres  type="double" rang="[0.0,1.0]"   default="0.85"  length="1">0.85</sharpness_thres>
                 <auto_sorting     type="int"    rang="[0, 1]"      default="1"     length="1">1</auto_sorting>
             </iso>

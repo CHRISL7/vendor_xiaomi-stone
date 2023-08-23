@@ -430,6 +430,7 @@
 /dev/ufs-bsg.*                                   u:object_r:vendor_bsg_device:s0
 /dev/hsicctl.*                        u:object_r:vendor_hsic_device:s0
 /dev/spidev0.1                        u:object_r:lirc_device:s0
+/cache/mqsas(/.*)?                      u:object_r:mqsas_data_file:s0
 /sys/devices(/platform)?/soc/soc:qcom,spss_utils(/.*)?             u:object_r:vendor_sysfs_spss:s0
 /sys/devices(/platform)?/soc/soc:qcom,gpubw/devfreq/soc:qcom,gpubw(/.*)? u:object_r:vendor_sysfs_devfreq:s0
 /dev/ramdump_.*                                 u:object_r:vendor_ramdump_device:s0
@@ -465,6 +466,7 @@
 /data/vendor/dlsc(/.*)?                u:object_r:vendor_dlsc_data_file:s0
 /data/vendor/tloc(/.*)?                u:object_r:vendor_tlocd_data_file:s0
 /data/vendor/time(/.*)?                u:object_r:vendor_time_data_file:s0
+/mnt/rescue/mqsas(/.*)?                 u:object_r:mqsas_data_file:s0
 /data/vendor/wifi(/.*)?                                             u:object_r:vendor_wifi_vendor_data_file:s0
 /data/vendor/qwes(/.*)?                                             u:object_r:vendor_qwes_data_file:s0
 /data/vendor/diag(/.*)?                                 u:object_r:minidump_data_file:s0
@@ -724,6 +726,7 @@
 /sys/devices/platform/soc/b300000.remoteproc-cdsp/remoteproc/remoteproc1/recovery      u:object_r:vendor_sysfs_ssr:s0
 /sys/devices/platform/soc/ab00000.remoteproc-adsp/remoteproc/remoteproc0/recovery      u:object_r:vendor_sysfs_ssr:s0
 /sys/devices/platform/soc/4ac0000.qcom,qupv3_0_geni_se/4a84000.i2c/i2c-0/0-0051/wakeup u:object_r:sysfs_wakeup:s0
+/sys/devices/platform/soc/4ac0000.qcom,qupv3_0_geni_se/4a84000.i2c/i2c-0/0-006a/wakeup u:object_r:sysfs_wakeup:s0
 /sys/devices/platform/soc/5c1b000.qcom,cci0/5c1b000.qcom,cci0:qcom,camera-flash@0/leds/led:torch u:object_r:sysfs_leds_lc:s0
 /sys/devices/platform/soc/4ac0000.qcom,qupv3_0_geni_se/4a84000.i2c/i2c-0/0-0051/wakeup/wakeup[0-9]* u:object_r:sysfs_wakeup:s0
 /sys/devices/platform/soc/4ac0000.qcom,qupv3_0_geni_se/4a84000.i2c/i2c-0/0-0071/power_supply/bms(/.*)?  u:object_r:sysfs_bms_info:s0

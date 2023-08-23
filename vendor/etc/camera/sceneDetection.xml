@@ -464,7 +464,7 @@
         <hdr_dead_dark_thres>10</hdr_dead_dark_thres>
         <hdr_over_exp_thres>254</hdr_over_exp_thres>
         <hdr_dead_dark_ratio_thres>0.05</hdr_dead_dark_ratio_thres>
-        <hdr_over_exp_ratio_thres>0.02</hdr_over_exp_ratio_thres>
+        <hdr_over_exp_ratio_thres>0.15</hdr_over_exp_ratio_thres>
   </hdr_trigger_3>
 
   <hdr_trigger_4 feature="bokeh1x" enable="true">
