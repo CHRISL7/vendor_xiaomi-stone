@@ -1,0 +1,43 @@
+on init
+    # DT2W
+    chown system system /proc/tp_gesture
+    chmod 0644 /proc/tp_gesture
+
+on post-fs-data
+    mkdir /data/vendor/nfc 0770 nfc nfc
+
+on post-fs
+    start stflashtool
+
+on early-boot
+    # SSR Setup
+    write /sys/bus/msm_subsys/devices/subsys0/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys1/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys2/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys3/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys4/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys5/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys6/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys7/restart_level RELATED
+
+on boot
+    start nfc_hal_service
+
+service stflashtool /vendor/bin/STFlashTool
+    class late_start
+    group nfc
+    user nfc
+    oneshot
+
+service vendor.goodix-events /vendor/bin/init.goodix.events.sh
+    class late_start
+    user root
+    group root system input
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    start vendor.goodix-events
+
+on property:ro.boot.hwname=*
+    setprop ro.boot.product.hardware.sku ${ro.boot.hwname}
