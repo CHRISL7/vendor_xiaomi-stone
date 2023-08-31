@@ -336,8 +336,6 @@ need to be added just before the end of it's major group. -->
         <Minor OpcodeValue="0x1" Node="/proc/sys/walt/task_load_boost" />
         <Minor OpcodeValue="0x2" Node="/proc/sys/walt/sched_cluster_util_thres_pct" />
         <Minor OpcodeValue="0x3" Node="/proc/sys/walt/sched_idle_enough" />
-        <Minor OpcodeValue="0x4" Node="/proc/sys/walt/sched_em_inflate_pct" />
-        <Minor OpcodeValue="0x5" Node="/proc/sys/walt/sched_em_inflate_thres" />
     <!-- sched2 major end -->
     <!--Add new resource expected value and write value in configs/test/common/perfcommonresourceconfigs.xml
     for support in regression framework-->

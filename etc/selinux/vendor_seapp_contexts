@@ -1,5 +1,3 @@
-user=_app seinfo=platform name=com.google.android.flipendo domain=flipendo type=app_data_file levelFrom=all
-user=_app seinfo=platform name=com.google.android.turboadapter domain=turbo_adapter type=app_data_file levelFrom=all
 user=_app seinfo=tango name=com.google.tango:app domain=untrusted_app type=app_data_file levelFrom=user
 user=_app seinfo=platform name=com.qualcomm.timeservice domain=vendor_timeservice_app type=app_data_file levelFrom=all
 user=_app seinfo=platform name=.qtidataservices domain=vendor_qtidataservices_app type=app_data_file levelFrom=all
@@ -11,3 +9,4 @@ user=_app seinfo=platform name=com.qualcomm.qti.qms.service.connectionsecurity d
 user=_app seinfo=platform name=.qms domain=vendor_qms_app type=app_data_file levelFrom=all
 user=system seinfo=platform name=com.qualcomm.qti.perfdump domain=vendor_perfdump_app type=system_app_data_file
 user=_app seinfo=platform name=.pasr domain=vendor_powerservice_app type=app_data_file levelFrom=all
+user=system seinfo=platform name=com.longcheertel.cit.sensor domain=sensors_test_app type=system_app_data_file levelFrom=all

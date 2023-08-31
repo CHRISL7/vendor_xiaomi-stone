@@ -81,3 +81,5 @@ geteuid: 1
 getgid: 1
 getegid: 1
 getgroups: 1
+sched_setaffinity: 1
+sched_getaffinity: 1

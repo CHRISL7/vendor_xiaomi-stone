@@ -144,7 +144,6 @@ function configure_memory_parameters() {
 
     # Disable wsf for all targets beacause we are using efk.
     # wsf Range : 1..1000 So set to bare minimum value 1.
-    echo 1 > /proc/sys/vm/watermark_scale_factor
 
     configure_zram_parameters
 
@@ -176,6 +175,21 @@ function configure_memory_parameters() {
     else
 		echo 4096 > /proc/sys/vm/min_free_kbytes
     fi
+  extra_free_kbytes_backup_enable=`getprop persist.vendor.spc.mi_extra_free_enable`
+  MIN_PERCPU_PAGELIST_HIGH_FRACTION=8
+
+  if [ "true" = ${extra_free_kbytes_backup_enable} ]; then
+          echo `cat /proc/sys/vm/min_free_kbytes` " " `cat /proc/sys/vm/watermark_scale_factor` " -1" > /sys/kernel/mi_wmark/extra_free_kbytes
+          cat /proc/sys/vm/lowmem_reserve_ratio > /proc/sys/vm/lowmem_reserve_ratio
+
+          percpu_pagelist_high_fraction=`cat /proc/sys/vm/percpu_pagelist_high_fraction`
+          new_percpu_pagelist_high_fraction=${percpu_pagelist_high_fraction}
+          [ ${percpu_pagelist_high_fraction} -lt ${MIN_PERCPU_PAGELIST_HIGH_FRACTION} ] && new_percpu_pagelist_high_fraction=${MIN_PERCPU_PAGELIST_HIGH_FRACTION}
+          let new_percpu_pagelist_high_fraction++
+          echo ${new_percpu_pagelist_high_fraction} > /proc/sys/vm/percpu_pagelist_high_fraction
+          echo ${percpu_pagelist_high_fraction} > /proc/sys/vm/percpu_pagelist_high_fraction
+
+  fi
 }
 
 function start_hbtp()
@@ -285,7 +299,10 @@ echo 0 > /sys/devices/system/cpu/cpufreq/policy0/walt/rtg_boost_freq
 
 # configure input boost settings
 echo 1190000 0 0 0 0 0 0 0 > /proc/sys/walt/input_boost/input_boost_freq
-echo 80 > /proc/sys/walt/input_boost/input_boost_ms
+echo 120 > /proc/sys/walt/input_boost/input_boost_ms
+
+echo 1516800 0 0 0 2208000 0 0 0 > /proc/sys/walt/input_boost/powerkey_input_boost_freq
+echo 400 > /proc/sys/walt/input_boost/powerkey_input_boost_ms
 
 # configure governor settings for gold cluster
 echo "walt" > /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
@@ -295,6 +312,12 @@ echo 1344000 > /sys/devices/system/cpu/cpufreq/policy4/walt/hispeed_freq
 echo 1056000 > /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq
 echo 1 > /sys/devices/system/cpu/cpufreq/policy4/walt/pl
 echo 0 > /sys/devices/system/cpu/cpufreq/policy4/walt/rtg_boost_freq
+
+# cpuset parameters
+echo 0-2 > /dev/cpuset/background/cpus
+echo 0-3 > /dev/cpuset/system-background/cpus
+echo 0-2,4-7 > /dev/cpuset/foreground/boost/cpus
+echo 0-7 > /dev/cpuset/top-app/cpus
 
 # configure bus-dcvs
 bus_dcvs="/sys/devices/system/cpu/bus_dcvs"

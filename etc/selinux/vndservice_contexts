@@ -1,9 +1,6 @@
 #line 1 "system/sepolicy/vendor/vndservice_contexts"
 manager                 u:object_r:service_manager_vndservice:s0
 *                       u:object_r:default_android_vndservice:s0
-#line 1 "device/xiaomi/topaz/sepolicy/vendor/xiaomi/fingerprint/vndservice_contexts"
-# Fingerprint
-FocalFingerprintService                                                u:object_r:fingerprint_vndservice:s0
 #line 1 "device/qcom/sepolicy_vndr/generic/vendor/common/vndservice_contexts"
 # Copyright (c) 2018, The Linux Foundation. All rights reserved.
 #
@@ -70,3 +67,7 @@ wfd.native.mm.service                          u:object_r:vendor_wfdnativemm_ser
 wfdhdcpvndservice                              u:object_r:vendor_wfdhdcpvndservice_service:s0
 #QTR SDK
 vendor_qtrsdkservice                           u:object_r:vendor_qtrsdkservice_service:s0
+
+DisplayFeatureControl                          u:object_r:DisplayFeatureControl_service:s0
+#line 1 "device/qcom/sepolicy_vndr/qva/vendor/bengal/vndservice_contexts"
+android.hardware.fingerprint.IGoodixFingerprintDaemon    u:object_r:goodix_fingerprint_vndservice:s0

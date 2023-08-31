@@ -1,0 +1,912 @@
+[master ce9593a] MIUI: V14.0.12.0.TMTMIXM
+ 792 files changed, 23013 insertions(+), 13193 deletions(-)
+ create mode 100755 bin/KmInstallKeybox
+ create mode 100755 bin/LctReadWriteNV
+ create mode 100755 bin/MI_IC
+ create mode 100755 bin/MI_RIC
+ rewrite bin/PalTest (65%)
+ create mode 100755 bin/PktRspTest
+ create mode 100755 bin/StoreKeybox
+ create mode 100755 bin/agmcap
+ create mode 100755 bin/agmcompressplay
+ create mode 100755 bin/agmhostless
+ create mode 100755 bin/agmplay
+ rewrite bin/athdiag (73%)
+ create mode 100755 bin/audioflacapp
+ rewrite bin/awk (66%)
+ create mode 100755 bin/bluedut.sh
+ create mode 100755 bin/blueduttest
+ create mode 100755 bin/bt_close
+ create mode 100755 bin/bt_close.sh
+ create mode 100755 bin/charge_logger
+ create mode 100755 bin/closewifi_L
+ create mode 100755 bin/consumerird
+ create mode 100755 bin/cplay
+ create mode 100755 bin/debug-diag
+ create mode 100755 bin/diag_callback_sample
+ create mode 100755 bin/diag_dci_sample
+ create mode 100755 bin/diag_klog
+ create mode 100755 bin/diag_mdlog
+ create mode 100755 bin/diag_socket_log
+ create mode 100755 bin/diag_uart_log
+ create mode 100755 bin/diagcommd
+ create mode 100755 bin/dppdaemon
+ create mode 100755 bin/e_loop
+ create mode 100755 bin/ffu
+ create mode 100755 bin/fm_qsoc_patches
+ create mode 100755 bin/fmconfig
+ create mode 100755 bin/fmfactorytest
+ create mode 100755 bin/fmfactorytestserver
+ create mode 100755 bin/ftmdaemon
+ rewrite bin/hal_proxy_daemon (80%)
+ create mode 100755 bin/hdcp1prov
+ create mode 100755 bin/hdcp2p2prov
+ rewrite bin/hostapd_cli (80%)
+ create mode 100755 bin/hw/android.hardware.atrace@1.0-service
+ rewrite bin/hw/android.hardware.audio.service_64 (69%)
+ delete mode 100755 bin/hw/android.hardware.biometrics.fingerprint@2.1-service
+ mode change 100644 => 100755 bin/hw/android.hardware.biometrics.fingerprint@2.1-service_lc
+ mode change 100644 => 100755 bin/hw/android.hardware.bluetooth@1.0-service-qti
+ rewrite bin/hw/android.hardware.camera.provider@2.4-service_64 (66%)
+ rewrite bin/hw/android.hardware.cas@1.2-service (98%)
+ rewrite bin/hw/android.hardware.drm-service.clearkey (87%)
+ mode change 100644 => 100755 bin/hw/android.hardware.drm-service.widevine
+ create mode 100755 bin/hw/android.hardware.dumpstate-service.xiaomi
+ mode change 100644 => 100755 bin/hw/android.hardware.gatekeeper@1.0-service-qti
+ mode change 100644 => 100755 bin/hw/android.hardware.gnss-aidl-service-qti
+ rewrite bin/hw/android.hardware.health-service.qti (87%)
+ rewrite bin/hw/android.hardware.ir-service.example (77%)
+ mode change 100644 => 100755 bin/hw/android.hardware.keymaster@4.0-service-qti
+ rewrite bin/hw/android.hardware.media.omx@1.0-service (62%)
+ delete mode 100755 bin/hw/android.hardware.nfc-service.st
+ create mode 100755 bin/hw/android.hardware.nfc@1.2-service-st
+ rewrite bin/hw/android.hardware.power-service (92%)
+ mode change 100644 => 100755 bin/hw/android.hardware.security.keymint-service-qti
+ create mode 100755 bin/hw/android.hardware.sensors@2.1-service.multihal
+ delete mode 100755 bin/hw/android.hardware.sensors@2.1-service.xiaomi-multihal
+ rewrite bin/hw/android.hardware.thermal@2.0-service.qti-v2 (95%)
+ create mode 100755 bin/hw/android.hardware.usb.gadget@1.1-service-qti
+ rewrite bin/hw/android.hardware.usb@1.2-service-qti (92%)
+ rewrite bin/hw/android.hardware.wifi@1.0-service (84%)
+ create mode 100755 bin/hw/capabilityconfigstoretest
+ rewrite bin/hw/hostapd (78%)
+ delete mode 100644 bin/hw/qconfigservice
+ mode change 100644 => 100755 bin/hw/qcrilNrd
+ delete mode 100755 bin/hw/vendor.aospa.power-service
+ mode change 100644 => 100755 bin/hw/vendor.display.color@1.0-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.esepowermanager@1.1-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.alarm@1.0-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
+ rewrite bin/hw/vendor.qti.hardware.display.allocator-service (92%)
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.display.composer-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.factory@1.0-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.iop@2.0-service
+ rewrite bin/hw/vendor.qti.hardware.lights.service (76%)
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.limits@1.2-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.perf-hal-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.qseecom@1.0-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.secureprocessor@1.0
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.servicetracker@1.2-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.soter@1.0-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti
+ rewrite bin/hw/vendor.qti.hardware.vibrator.service (80%)
+ mode change 100644 => 100755 bin/hw/vendor.qti.media.c2@1.0-service
+ rewrite bin/hw/vendor.qti.media.c2audio@1.0-service (71%)
+ mode change 100644 => 100755
+ mode change 100644 => 100755 bin/hw/vendor.qti.memory.pasrmanager@1.0-service
+ mode change 100644 => 100755 bin/hw/vendor.qti.psiclient@1.0-service
+ mode change 100644 => 100755 bin/hw/vendor.xiaomi.hardware.displayfeature@1.0-service
+ create mode 100755 bin/hw/vendor.xiaomi.hardware.micharge@1.0-service
+ create mode 100755 bin/hw/vendor.xiaomi.hardware.mimd@1.0-service
+ create mode 100755 bin/hw/vendor.xiaomi.hardware.misys@1.0-service
+ create mode 100755 bin/hw/vendor.xiaomi.hardware.misys@2.0-service
+ create mode 100755 bin/hw/vendor.xiaomi.hardware.misys@3.0-service
+ create mode 100755 bin/hw/vendor.xiaomi.hardware.misys@4.0-service
+ create mode 100755 bin/hw/vendor.xiaomi.hw.touchfeature@1.0-service
+ rewrite bin/hw/wpa_supplicant (66%)
+ delete mode 100755 bin/init.goodix.events.sh
+ create mode 100755 bin/init.kernel.extra_free_kbytes.sh
+ delete mode 100755 bin/init.kernel.post_boot-bengal-iot.sh
+ create mode 100755 bin/init.qti.kernel.debug-bengal.sh
+ create mode 100755 bin/init.qti.kernel.debug.sh
+ delete mode 100755 bin/init.veth_ipa_config.sh
+ rewrite bin/ipacm (77%)
+ create mode 100755 bin/ipacm-diag
+ create mode 100755 bin/iperf
+ create mode 100755 bin/iw
+ create mode 100755 bin/iwlist
+ create mode 100755 bin/iwpriv
+ create mode 100755 bin/ks
+ create mode 100755 bin/loadalgo
+ create mode 100755 bin/loopback.sh
+ create mode 100755 bin/loopbacktest
+ create mode 100755 bin/mec
+ create mode 100755 bin/minidump64
+ create mode 100755 bin/mmid
+ create mode 100755 bin/myftm
+ create mode 100755 bin/myftm.agent.sh
+ create mode 100755 bin/myftmftm
+ create mode 100755 bin/openwifi_L
+ create mode 100755 bin/playback.sh
+ create mode 100755 bin/pmic_key_reset
+ create mode 100755 bin/poweroffm64
+ create mode 100755 bin/ppd
+ create mode 100755 bin/qguard
+ create mode 100755 bin/qmi-framework-tests/qmi_test_mt_client_init_instance
+ create mode 100755 bin/qseecom_sample_client
+ create mode 100755 bin/qtigetprop
+ create mode 100755 bin/qtisetprop
+ create mode 100755 bin/record.sh
+ create mode 100755 bin/record_playback.sh
+ create mode 100755 bin/sensors_client_test
+ create mode 100755 bin/sensors_test
+ rewrite bin/sh (82%)
+ create mode 100755 bin/shsusrd
+ create mode 100755 bin/sigma_dut
+ rewrite bin/spectraltool (77%)
+ create mode 100755 bin/ssr_diag
+ create mode 100755 bin/ssr_setup
+ create mode 100755 bin/stfactorydemo-vendor
+ create mode 100755 bin/subsystem_ramdump
+ create mode 100755 bin/system_dlkm_modprobe.sh
+ create mode 100755 bin/test-nusensor
+ create mode 100755 bin/test_diag
+ create mode 100755 bin/tloc_daemon
+ rewrite bin/toybox_vendor (63%)
+ rewrite bin/vendor_cmd_tool (71%)
+ create mode 100755 bin/vendor_tcpdump
+ create mode 100755 bin/wdsdaemon
+ create mode 100755 bin/wifiSarTool
+ delete mode 100755 bin/wificfrtool
+ rewrite bin/wifilearner (73%)
+ create mode 100755 bin/wifitest.sh
+ create mode 100755 bin/wifitest_close.sh
+ rewrite bin/wpa_cli (80%)
+ create mode 100644 etc/Diag.cfg
+ rewrite etc/NOTICE.xml.gz (97%)
+ create mode 100644 etc/NOTICE_GPL.html.gz
+ rename etc/{audio_policy_engine_configuration.xml => audio_policy_engine_configuration_mi.xml} (100%)
+ create mode 100644 etc/bt_diag.cfg
+ create mode 100644 etc/cit_config.xml
+ mode change 100755 => 100644 etc/excluded-input-devices.xml
+ create mode 100644 etc/fstab.default
+ create mode 100644 etc/fstab.emmc
+ delete mode 100644 etc/fstab.qcom
+ create mode 100644 etc/ftm_test_config
+ create mode 100644 etc/ftm_test_config_bengal-idp-snd-card
+ create mode 100644 etc/ftm_test_config_bengal-qrd-snd-card
+ create mode 100644 etc/gps_diag.cfg
+ create mode 100644 etc/hdr_config.cfg
+ create mode 100644 etc/init.qti.fm.sh
+ create mode 100644 etc/init/android.hardware.atrace@1.0-service.rc
+ delete mode 100644 etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc
+ create mode 100644 etc/init/android.hardware.biometrics.fingerprint@2.1-service_lc.rc
+ create mode 100644 etc/init/android.hardware.nfc@1.2-service-st.rc
+ create mode 100644 etc/init/android.hardware.sensors@2.1-service-multihal.rc
+ delete mode 100644 etc/init/android.hardware.sensors@2.1-service.xiaomi-multihal.rc
+ create mode 100644 etc/init/android.hardware.usb.gadget@1.1-service-qti.rc
+ create mode 100644 etc/init/ddr_training.rc
+ create mode 100644 etc/init/diagcommd.rc
+ create mode 100644 etc/init/dumpstate-xiaomi.rc
+ create mode 100644 etc/init/ffu.rc
+ create mode 100644 etc/init/hw/init.qcom.factory.rc
+ create mode 100644 etc/init/hw/init.qti.ufs.rc
+ create mode 100644 etc/init/hw/init.stnfc.rc
+ delete mode 100644 etc/init/init.aospa.perf.rc
+ delete mode 100644 etc/init/init.aospa.usb.rc
+ create mode 100644 etc/init/init.charge_logger.rc
+ delete mode 100644 etc/init/init.qcom.alarm.rc
+ create mode 100644 etc/init/init.qti.fm.rc
+ delete mode 100644 etc/init/init.topaz.perf.rc
+ delete mode 100644 etc/init/init.topaz.rc
+ delete mode 100644 etc/init/init.xiaomi.fingerprint.rc
+ delete mode 100644 etc/init/init.xiaomi.rc
+ create mode 100644 etc/init/ipa_fws.rc
+ create mode 100644 etc/init/ipacm-diag.rc
+ create mode 100644 etc/init/mi_ic.rc
+ create mode 100644 etc/init/mi_ric.rc
+ create mode 100644 etc/init/minidump.rc
+ delete mode 100644 etc/init/nfc-service-default.rc
+ delete mode 100644 etc/init/qconfig.rc
+ create mode 100644 etc/init/qguard.rc
+ create mode 100644 etc/init/qmipriod.debug.rc
+ create mode 100644 etc/init/shsusrd.rc
+ create mode 100644 etc/init/tloc_daemon.rc
+ delete mode 100644 etc/init/vendor.aospa.power-service.rc
+ delete mode 100644 etc/init/vendor.qti.hardware.wifi.wificfr@1.0-service.rc
+ create mode 100644 etc/init/vendor.xiaomi.hardware.micharge@1.0-service.rc
+ create mode 100644 etc/init/vendor.xiaomi.hardware.mimd@1.0-service.rc
+ create mode 100644 etc/init/vendor.xiaomi.hardware.misys@1.0-service.rc
+ create mode 100644 etc/init/vendor.xiaomi.hardware.misys@2.0-service.rc
+ create mode 100644 etc/init/vendor.xiaomi.hardware.misys@3.0-service.rc
+ create mode 100644 etc/init/vendor.xiaomi.hardware.misys@4.0-service.rc
+ create mode 100644 etc/init/vendor.xiaomi.hw.touchfeature@1.0-service.rc
+ mode change 100755 => 100644 etc/lm/QAPE.xml
+ mode change 100755 => 100644 etc/lm/QGPE.xml
+ mode change 100755 => 100644 etc/lm/QGPEActionMap.xml
+ create mode 100644 etc/mixer_paths_bengal_idp_india.xml
+ delete mode 100644 etc/mixer_paths_idp_india.xml
+ mode change 100755 => 100644 etc/perf/commonresourceconfigs.xml
+ mode change 100755 => 100644 etc/perf/commonsysnodesconfigs.xml
+ create mode 100644 etc/perf/targetavcsysnodesconfigs.xml
+ mode change 100755 => 100644 etc/perf/targetconfig.xml
+ mode change 100755 => 100644 etc/perf/targetresourceconfigs.xml
+ mode change 100755 => 100644 etc/perf/targetsysnodesconfigs.xml
+ create mode 100644 etc/perf/testcommonresourceconfigs.xml
+ create mode 100644 etc/perf/testtargetresourceconfigs.xml
+ create mode 100644 etc/permissions/android.hardware.light.xml
+ delete mode 100644 etc/permissions/android.hardware.nfc.ese.xml
+ delete mode 100644 etc/permissions/android.hardware.nfc.hce.xml
+ delete mode 100644 etc/permissions/android.hardware.nfc.hcef.xml
+ delete mode 100644 etc/permissions/android.hardware.nfc.uicc.xml
+ delete mode 100644 etc/permissions/android.hardware.nfc.xml
+ delete mode 100644 etc/permissions/android.hardware.se.omapi.ese.xml
+ delete mode 100644 etc/permissions/android.hardware.se.omapi.uicc.xml
+ delete mode 100644 etc/permissions/android.hardware.sensor.barometer.xml
+ delete mode 100644 etc/permissions/android.hardware.wifi.aware.xml
+ delete mode 100644 etc/permissions/android.hardware.wifi.rtt.xml
+ delete mode 100644 etc/permissions/com.android.nfc_extras.xml
+ create mode 100644 etc/qc.xml
+ create mode 100644 etc/qc_CN_1.xml
+ create mode 100644 etc/qc_CN_2.xml
+ create mode 100644 etc/qc_Global_2.xml
+ create mode 100644 etc/qc_India_1.1.xml
+ create mode 100644 etc/qc_India_2.xml
+ create mode 100644 etc/qguard.json
+ create mode 100644 etc/qvirtmgr-vndr.json
+ create mode 100644 etc/rcv_pb.wav
+ delete mode 100644 etc/recovery-resource.dat
+ delete mode 100644 etc/resourcemanager_bengal_idp_arrax.xml
+ delete mode 100644 etc/resourcemanager_bengal_qrd_arrax.xml
+ create mode 100644 etc/sdr_config.cfg
+ delete mode 100644 etc/seccomp_policy/codec2.software.ext.policy
+ delete mode 100644 etc/seccomp_policy/codec2.vendor.ext.policy
+ delete mode 100644 etc/seccomp_policy/gnss@2.0-edgnss-daemon.policy
+ create mode 100644 etc/seccomp_policy/gnss@2.0-xtwifi-inet-agent.policy
+ delete mode 100644 etc/seccomp_policy/mediacodec.policy
+ delete mode 100644 etc/seccomp_policy/mediaextractor.policy
+ rewrite etc/selinux/vendor_mac_permissions.xml (97%)
+ create mode 100644 etc/sensors/config/holi_tmd2755_0.json
+ create mode 100644 etc/sensors/config/kona_qmc630x_0.json
+ create mode 100644 etc/sensors/config/kona_qmc630x_1.json
+ create mode 100644 etc/sensors/config/lahaina_mmc56x3x_0.json
+ create mode 100644 etc/sensors/config/lahaina_mmc56x3x_1.json
+ create mode 100644 etc/sensors/config/msmnile_bmi3x0_0.json
+ create mode 100644 etc/sensors/config/msmnile_icm4x6x.json
+ create mode 100644 etc/sensors/config/sdm845_sx932x_0.json
+ create mode 100644 etc/spk_pb.wav
+ create mode 100644 etc/telephony_packages.xml
+ create mode 100644 etc/tzlog.dict
+ create mode 100644 etc/usb_compositions.conf
+ delete mode 100644 etc/usecaseKvManager_arrax.xml
+ create mode 100644 etc/vintf/manifest/android.hardware.atrace@1.0-service.xml
+ rename etc/vintf/manifest/{android.hardware.sensors@2.1.xiaomi-multihal.xml => android.hardware.sensors@2.1-multihal.xml} (100%)
+ create mode 100644 etc/vintf/manifest/android.hardware.usb.gadget@1.1-service.xml
+ create mode 100644 etc/vintf/manifest/dumpstate-xiaomi.xml
+ delete mode 100644 etc/vintf/manifest/nfc-service-default.xml
+ delete mode 100644 etc/vintf/manifest/vendor.aospa.power.xml
+ delete mode 100644 etc/vintf/manifest/vendor.qti.hardware.qconfig@1.0-service.xml
+ delete mode 100644 etc/vintf/manifest/vendor.qti.hardware.wifi.wificfr@1.0-service.xml
+ create mode 100644 etc/vintf/manifest/vendor.xiaomi.hardware.micharge@1.0.xml
+ create mode 100644 etc/vintf/manifest/vendor.xiaomi.hardware.mimd@1.0-service.xml
+ create mode 100644 etc/vintf/manifest/vendor.xiaomi.hardware.misys@1.0.xml
+ create mode 100644 etc/vintf/manifest/vendor.xiaomi.hardware.misys@2.0.xml
+ create mode 100644 etc/vintf/manifest/vendor.xiaomi.hardware.misys@3.0.xml
+ create mode 100644 etc/vintf/manifest/vendor.xiaomi.hardware.misys@4.0.xml
+ create mode 100644 etc/xtra_root_cert.pem
+ create mode 100644 etc/xtwifi.conf
+ rewrite gpu/kbc/unified_ksqs.bin (82%)
+ create mode 100644 lib64/android.automotive.watchdog-V2-ndk.so
+ mode change 100755 => 100644 lib64/android.frameworks.cameraservice.common@2.0.so
+ rewrite lib64/android.frameworks.cameraservice.device@2.0.so (67%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.frameworks.cameraservice.device@2.1.so
+ rewrite lib64/android.frameworks.cameraservice.service@2.0.so (64%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.frameworks.cameraservice.service@2.1.so
+ mode change 100755 => 100644 lib64/android.frameworks.cameraservice.service@2.2.so
+ delete mode 100755 lib64/android.frameworks.displayservice@1.0.so
+ mode change 100755 => 100644 lib64/android.frameworks.sensorservice@1.0.so
+ create mode 100644 lib64/android.hardware.atrace@1.0.so
+ rewrite lib64/android.hardware.audio.common-util.so (65%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio.common@2.0-util.so (71%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio.common@4.0-util.so (71%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.hardware.audio.common@4.0.so
+ rewrite lib64/android.hardware.audio.common@5.0-util.so (74%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio.common@5.0.so (68%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio.common@6.0-util.so (75%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio.common@6.0.so (68%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio.common@7.0-enums.so (84%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio.common@7.0-util.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio.common@7.0.so (93%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.hardware.audio.effect@2.0-util.so
+ rewrite lib64/android.hardware.audio.effect@2.0.so (79%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.hardware.audio.effect@4.0-util.so
+ rewrite lib64/android.hardware.audio.effect@4.0.so (78%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.hardware.audio.effect@5.0-util.so
+ rewrite lib64/android.hardware.audio.effect@5.0.so (78%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.hardware.audio.effect@6.0-util.so
+ rewrite lib64/android.hardware.audio.effect@6.0.so (79%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.hardware.audio.effect@7.0-util.so
+ rewrite lib64/android.hardware.audio.effect@7.0.so (78%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio@2.0-util.so (62%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio@2.0.so (87%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio@4.0-util.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio@4.0.so (86%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio@5.0-util.so (73%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio@5.0.so (85%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio@6.0-util.so (73%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio@6.0.so (85%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio@7.0-util.so (81%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.audio@7.0.so (85%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.authsecret@1.0.so (86%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/android.hardware.automotive.vehicle@2.0-manager-lib.so
+ create mode 100644 lib64/android.hardware.automotive.vehicle@2.0.so
+ rewrite lib64/android.hardware.biometrics.fingerprint@2.1.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.bluetooth.audio@2.0.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.bluetooth.audio@2.1.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.bluetooth@1.0.so (90%)
+ mode change 100755 => 100644
+ delete mode 100755 lib64/android.hardware.bluetooth@1.1.so
+ rewrite lib64/android.hardware.boot@1.0.so (88%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.boot@1.1.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.boot@1.2.so (91%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.hardware.camera.common@1.0.so
+ rewrite lib64/android.hardware.camera.device@1.0.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.camera.device@3.2.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.camera.device@3.3.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.camera.device@3.4.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.camera.device@3.5.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.camera.device@3.6.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.camera.provider@2.4-external.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.camera.provider@2.4.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.drm@1.0.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.drm@1.1.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.drm@1.2.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.drm@1.3.so (91%)
+ mode change 100755 => 100644
+ delete mode 100755 lib64/android.hardware.drm@1.4.so
+ rewrite lib64/android.hardware.gatekeeper@1.0.so (91%)
+ mode change 100755 => 100644
+ delete mode 100755 lib64/android.hardware.graphics.common-V1-ndk_platform.so
+ delete mode 100755 lib64/android.hardware.graphics.common-V2-ndk.so
+ rewrite lib64/android.hardware.graphics.composer@2.1.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.graphics.composer@2.2.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.graphics.composer@2.3.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.graphics.composer@2.4.so (89%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.hardware.health@1.0.so
+ rewrite lib64/android.hardware.health@2.0.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.health@2.1.so (91%)
+ mode change 100755 => 100644
+ delete mode 100755 lib64/android.hardware.identity-V3-ndk.so
+ rewrite lib64/android.hardware.keymaster@3.0.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.keymaster@4.0.so (88%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.keymaster@4.1.so (86%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.media.c2@1.0.so (87%)
+ mode change 100755 => 100644
+ delete mode 100755 lib64/android.hardware.neuralnetworks-V1-ndk.so
+ create mode 100644 lib64/android.hardware.nfc@1.0.so
+ create mode 100644 lib64/android.hardware.nfc@1.1.so
+ create mode 100644 lib64/android.hardware.nfc@1.2.so
+ delete mode 100755 lib64/android.hardware.power-V4-ndk.so
+ create mode 100644 lib64/android.hardware.power@1.0.so
+ create mode 100644 lib64/android.hardware.power@1.1.so
+ create mode 100644 lib64/android.hardware.power@1.2.so
+ rewrite lib64/android.hardware.radio.config@1.0.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.radio.config@1.1.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.radio.config@1.2.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.radio.config@1.3.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.radio.deprecated@1.0.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.radio@1.0.so (77%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.radio@1.1.so (80%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.radio@1.2.so (79%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.radio@1.3.so (78%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.radio@1.4.so (78%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.radio@1.5.so (75%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.radio@1.6.so (72%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.secure_element@1.0.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.secure_element@1.1.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.secure_element@1.2.so (88%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.security.keymint-V1-ndk.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.sensors@1.0.so (92%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.hardware.sensors@2.0-ScopedWakelock.so
+ rewrite lib64/android.hardware.sensors@2.0.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.sensors@2.1.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.soundtrigger@2.1.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.soundtrigger@2.2.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.soundtrigger@2.3.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.thermal@1.0.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.thermal@2.0.so (90%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/android.hardware.usb.gadget@1.0.so
+ create mode 100644 lib64/android.hardware.usb.gadget@1.1.so
+ rewrite lib64/android.hardware.usb@1.0.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.usb@1.1.so (93%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.usb@1.2.so (92%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.hardware.wifi.hostapd@1.0.so
+ rewrite lib64/android.hardware.wifi.supplicant@1.0.so (60%)
+ mode change 100755 => 100644
+ rewrite lib64/android.hardware.wifi@1.0.so (65%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.hardware.wifi@1.1.so
+ rewrite lib64/android.hardware.wifi@1.2.so (60%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.hardware.wifi@1.3.so
+ mode change 100755 => 100644 lib64/android.hardware.wifi@1.4.so
+ mode change 100755 => 100644 lib64/android.hardware.wifi@1.5.so
+ mode change 100755 => 100644 lib64/android.hardware.wifi@1.6.so
+ mode change 100755 => 100644 lib64/android.hidl.allocator@1.0.so
+ delete mode 100755 lib64/android.hidl.base@1.0.so
+ delete mode 100755 lib64/android.hidl.manager@1.0.so
+ mode change 100755 => 100644 lib64/android.hidl.memory.block@1.0.so
+ rewrite lib64/android.system.keystore2-V1-ndk.so (86%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/android.system.net.netd@1.0.so
+ mode change 100755 => 100644 lib64/android.system.net.netd@1.1.so
+ mode change 100755 => 100644 lib64/android.system.wifi.keystore@1.0.so
+ rewrite lib64/camera.device@1.0-impl.so (84%)
+ mode change 100755 => 100644
+ rewrite lib64/camera.device@3.2-impl.so (86%)
+ mode change 100755 => 100644
+ rewrite lib64/camera.device@3.3-impl.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/camera.device@3.4-external-impl.so (81%)
+ mode change 100755 => 100644
+ rewrite lib64/camera.device@3.4-impl.so (87%)
+ mode change 100755 => 100644
+ rewrite lib64/camera.device@3.5-external-impl.so (87%)
+ mode change 100755 => 100644
+ rewrite lib64/camera.device@3.5-impl.so (87%)
+ mode change 100755 => 100644
+ rewrite lib64/camera.device@3.6-external-impl.so (87%)
+ mode change 100755 => 100644
+ rewrite lib64/com.dsi.ant@1.0.so (61%)
+ mode change 100755 => 100644
+ rewrite lib64/com.qualcomm.qti.bluetooth_audio@1.0.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/egl/libq3dtools_adreno.so (74%)
+ create mode 100644 lib64/ftm_fm_lib.so
+ rewrite lib64/hw/android.hardware.audio.effect@2.0-impl.so (86%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/android.hardware.audio.effect@4.0-impl.so (87%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/android.hardware.audio.effect@5.0-impl.so (88%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/android.hardware.audio.effect@6.0-impl.so (87%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/android.hardware.audio.effect@7.0-impl.so (87%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/android.hardware.audio@2.0-impl.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/android.hardware.audio@4.0-impl.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/android.hardware.audio@5.0-impl.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/android.hardware.audio@6.0-impl.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/android.hardware.audio@7.0-impl.so (91%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so
+ delete mode 100755 lib64/hw/android.hardware.bluetooth.audio@2.1-impl.so
+ rewrite lib64/hw/android.hardware.boot@1.0-impl-1.2-qti.so (83%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/android.hardware.camera.provider@2.4-impl.so (78%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so (87%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/hw/android.hardware.renderscript@1.0-impl.so
+ rewrite lib64/hw/android.hardware.soundtrigger@2.2-impl.so (86%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/android.hardware.soundtrigger@2.3-impl.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/hw/audio.bluetooth.default.so (89%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/hw/audio.primary.default.so
+ mode change 100755 => 100644 lib64/hw/audio.r_submix.default.so
+ mode change 100755 => 100644 lib64/hw/audio.usb.default.so
+ create mode 100644 lib64/hw/gralloc.bengal.so
+ mode change 100755 => 100644 lib64/hw/gralloc.default.so
+ mode change 100755 => 100644 lib64/hw/local_time.default.so
+ mode change 100755 => 100644 lib64/hw/power.default.so
+ create mode 100644 lib64/hw/vendor.xiaomi.hardware.micharge@1.0-impl.so
+ create mode 100644 lib64/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
+ create mode 100644 lib64/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
+ create mode 100644 lib64/hw/vendor.xiaomi.hardware.misys@3.0-impl.so
+ create mode 100644 lib64/hw/vendor.xiaomi.hardware.misys@4.0-impl.so
+ create mode 100644 lib64/hw/vendor.xiaomi.hw.touchfeature@1.0-impl.so
+ mode change 100755 => 100644 lib64/hw/vibrator.default.so
+ rewrite lib64/libEvrcSwCodec.so (85%)
+ create mode 100644 lib64/libGPMTEEC_vendor.so
+ rewrite lib64/libOmxCore.so (83%)
+ mode change 100755 => 100644
+ rewrite lib64/libOpenCL.so (90%)
+ create mode 100644 lib64/libPlatformValidatorShared.so
+ rewrite lib64/libQcelp13SwCodec.so (89%)
+ create mode 100644 lib64/libSEESalt.so
+ create mode 100644 lib64/libStDrvInt.so
+ create mode 100644 lib64/libTxPwrJni.so
+ create mode 100644 lib64/libUSTANative.so
+ mode change 100755 => 100644 lib64/libalsautils.so
+ rewrite lib64/libavservices_minijail.so (66%)
+ mode change 100755 => 100644
+ delete mode 100755 lib64/libavservices_minijail_vendor.so
+ rewrite lib64/libbinderdebug.so (75%)
+ mode change 100755 => 100644
+ rewrite lib64/libbluetooth_audio_session.so (94%)
+ mode change 100755 => 100644
+ rewrite lib64/libbluetooth_audio_session_aidl.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/libboot_control_qti.so (88%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/libcalculator.so
+ create mode 100644 lib64/libcalculator_htp.so
+ mode change 100755 => 100644 lib64/libcamera2ndk_vendor.so
+ create mode 100644 lib64/libcert_parse.wpa_s.so
+ create mode 100644 lib64/libcheckpid.so
+ rewrite lib64/libchrome.so (77%)
+ mode change 100755 => 100644
+ rewrite lib64/libcld80211.so (71%)
+ mode change 100755 => 100644
+ rewrite lib64/libcodec2_hidl@1.0.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/libcodec2_hidl_plugin.so (89%)
+ mode change 100755 => 100644
+ delete mode 100755 lib64/libcodec2_soft_common.so
+ rewrite lib64/libcodec2_vndk.so (85%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/libdisplaydebug.so
+ delete mode 100755 lib64/libdng_sdk.so
+ create mode 100644 lib64/libdpp_manager.so
+ rewrite lib64/libdrm.so (79%)
+ mode change 100755 => 100644
+ rewrite lib64/libdrmutils.so (75%)
+ mode change 100755 => 100644
+ rewrite lib64/libeffects.so (65%)
+ mode change 100755 => 100644
+ rewrite lib64/libeffectsconfig.so (80%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/libesepmconfig.so
+ create mode 100644 lib64/libesesbprovision.so
+ delete mode 100644 lib64/libfastcrc.so
+ rewrite lib64/libgpu_tonemapper.so (71%)
+ mode change 100755 => 100644
+ rewrite lib64/libgralloc.qti.so (83%)
+ mode change 100755 => 100644
+ rewrite lib64/libgralloccore.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/libgrallocutils.so (84%)
+ mode change 100755 => 100644
+ rewrite lib64/libgui_vendor.so (75%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/libhdcp1prov.so
+ create mode 100644 lib64/libhdcp2p2prov.so
+ create mode 100644 lib64/libhdcpsrm.so
+ mode change 100755 => 100644 lib64/libhidltransport.so
+ create mode 100644 lib64/libhta.so
+ mode change 100755 => 100644 lib64/libhwbinder.so
+ rewrite lib64/libipanat.so (83%)
+ mode change 100755 => 100644
+ rewrite lib64/libjson.so (69%)
+ mode change 100755 => 100644
+ rewrite lib64/libkernelmanager.so (73%)
+ rewrite lib64/libkeymaster_messages.so (71%)
+ mode change 100755 => 100644
+ rewrite lib64/libkeystore-engine-wifi-hidl.so (82%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/libkeystore-wifi-hidl.so
+ create mode 100644 lib64/libloadalgo_stub.so
+ create mode 100644 lib64/libloadtrusteduiapp.so
+ create mode 100644 lib64/libloc_qwes_iface.so
+ create mode 100644 lib64/liblocation_api_msg.so
+ create mode 100644 lib64/liblocation_client_api.so
+ create mode 100644 lib64/liblocation_integration_api.so
+ create mode 100644 lib64/liblogwrap_vendor.so
+ create mode 100644 lib64/libmapdata_api.so
+ create mode 100644 lib64/libmasc.so
+ create mode 100644 lib64/libmdsprpc.so
+ rewrite lib64/libmediautils_vendor.so (81%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/libmiracast.so
+ create mode 100644 lib64/libmm-hdcpmgr.so
+ rewrite lib64/libmm-omxcore.so (83%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/libnative-api.so
+ rewrite lib64/libnbaio_mono.so (63%)
+ mode change 100755 => 100644
+ rewrite lib64/liboffloadhal.so (87%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/libos.so
+ create mode 100644 lib64/libpcap.so
+ rewrite lib64/libplatformconfig.so (76%)
+ mode change 100755 => 100644
+ rewrite lib64/libprotobuf-cpp-full-3.9.1.so (66%)
+ mode change 100755 => 100644
+ rewrite lib64/libprotobuf-cpp-lite-3.9.1.so (72%)
+ mode change 100755 => 100644
+ rewrite lib64/libqc2audio_base.so (92%)
+ rewrite lib64/libqc2audio_basecodec.so (91%)
+ rewrite lib64/libqc2audio_core.so (92%)
+ rewrite lib64/libqc2audio_hooks.so (82%)
+ rewrite lib64/libqc2audio_hwaudiocodec.so (88%)
+ rewrite lib64/libqc2audio_swaudiocodec.so (92%)
+ rewrite lib64/libqc2audio_utils.so (90%)
+ rewrite lib64/libqc2colorconvertfilter.so (89%)
+ rewrite lib64/libqc2filter.so (92%)
+ delete mode 100644 lib64/libqc2vppfilter.so
+ rewrite lib64/libqcodec2_base.so (87%)
+ rewrite lib64/libqcodec2_basecodec.so (92%)
+ rewrite lib64/libqcodec2_core.so (93%)
+ rewrite lib64/libqcodec2_filterbase.so (93%)
+ rewrite lib64/libqcodec2_hooks.so (88%)
+ rewrite lib64/libqcodec2_mockfilter.so (93%)
+ rewrite lib64/libqcodec2_mockqc2filter.so (93%)
+ rewrite lib64/libqcodec2_platform.so (88%)
+ rewrite lib64/libqcodec2_utils.so (91%)
+ rewrite lib64/libqcodec2_v4l2codec.so (81%)
+ delete mode 100644 lib64/libqconfigclient.so
+ rewrite lib64/libqdMetaData.so (77%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/libqesdk2_0.so
+ delete mode 100755 lib64/libqsap_sdk.so
+ rewrite lib64/libqservice.so (87%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/libqti_vndfwk_detect.so
+ mode change 100755 => 100644 lib64/libqti_vndfwk_detect_vendor.so
+ mode change 100755 => 100644 lib64/libqtivibratoreffect.so
+ delete mode 100755 lib64/libqtivibratoreffectoffload.so
+ rewrite lib64/librecovery_updater.so (83%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/librecovery_updater_msm.so
+ create mode 100644 lib64/libreffeature.so
+ rewrite lib64/librmnetctl.so (63%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/libsamplefilterplugin.so
+ create mode 100644 lib64/libsdsprpc.so
+ delete mode 100755 lib64/libsensorndkbridge.so
+ rewrite lib64/libsfplugin_ccodec_utils.so (81%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/libsi.so
+ create mode 100644 lib64/libsmemlog.so
+ delete mode 100644 lib64/libspectre.so
+ rewrite lib64/libstagefright_bufferpool@2.0.1.so (89%)
+ mode change 100755 => 100644
+ delete mode 100755 lib64/libstagefright_softomx.so
+ rewrite lib64/libstagefrighthw.so (67%)
+ mode change 100755 => 100644
+ delete mode 100755 lib64/libstdc++.so
+ create mode 100644 lib64/libstfactory-vendor.so
+ create mode 100644 lib64/libstreamparser.so
+ create mode 100644 lib64/libsubsystem_control.so
+ create mode 100644 lib64/libthreadutils.so
+ mode change 100755 => 100644 lib64/libtinycompress.so
+ create mode 100644 lib64/libtinyxml.so
+ create mode 100644 lib64/libtzdrmgenprov.so
+ mode change 100755 => 100644 lib64/libvibrator.so
+ delete mode 100644 lib64/libvideooptfeature.so
+ mode change 100755 => 100644 lib64/libvndfwk_detect_jni.qti.so
+ mode change 100755 => 100644 lib64/libvndfwk_detect_jni.qti_vendor.so
+ rewrite lib64/libwifi-hal-ctrl.so (69%)
+ mode change 100755 => 100644
+ rewrite lib64/libwifi-hal-qcom.so (78%)
+ mode change 100755 => 100644
+ rewrite lib64/libwifi-hal.so (75%)
+ mode change 100755 => 100644
+ rewrite lib64/libwpa_client.so (60%)
+ mode change 100755 => 100644
+ create mode 100644 lib64/libxml2_vendor.so
+ rewrite lib64/mediacas/libclearkeycasplugin.so (83%)
+ mode change 100755 => 100644
+ delete mode 100755 lib64/nfc_nci.st21nfc.default.so
+ rewrite lib64/soundfx/libaudiopreprocessing.so (77%)
+ mode change 100755 => 100644
+ rewrite lib64/soundfx/libbundlewrapper.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/soundfx/libdownmix.so (72%)
+ mode change 100755 => 100644
+ rewrite lib64/soundfx/libdynproc.so (82%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/soundfx/libeffectproxy.so
+ rewrite lib64/soundfx/libhapticgenerator.so (95%)
+ mode change 100755 => 100644
+ rewrite lib64/soundfx/libldnhncr.so (61%)
+ mode change 100755 => 100644
+ rewrite lib64/soundfx/libreverbwrapper.so (94%)
+ mode change 100755 => 100644
+ mode change 100755 => 100644 lib64/soundfx/libvisualizer.so
+ delete mode 100755 lib64/vendor.aospa.power-V1-ndk.so
+ rewrite lib64/vendor.display.config@1.0.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.display.config@1.1.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.display.config@1.10.so (88%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.display.config@1.11.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.display.config@1.2.so (88%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.display.config@1.3.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.display.config@1.4.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.display.config@1.5.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.display.config@1.6.so (88%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.display.config@1.7.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.display.config@1.8.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.display.config@1.9.so (88%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.display.config@2.0.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.alarm@1.0.so (89%)
+ create mode 100644 lib64/vendor.qti.hardware.automotive.vehicle@1.0.so
+ delete mode 100755 lib64/vendor.qti.hardware.bluetooth.audio-V1-ndk.so
+ rewrite lib64/vendor.qti.hardware.bluetooth_audio@2.0.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.bluetooth_audio@2.1.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.btconfigstore@1.0.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.btconfigstore@2.0.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.camera.device@1.0.so (93%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.camera.postproc@1.0.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.allocator@1.0.so (86%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.allocator@3.0.so (85%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.allocator@4.0.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.composer@1.0.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.composer@2.0.so (88%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.composer@3.0.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.config-V1-ndk.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.config-V2-ndk.so (88%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.config-V3-ndk.so (88%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.config-V4-ndk.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.config-V5-ndk.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.config-V6-ndk.so (90%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.mapper@1.0.so (93%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.mapper@1.1.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.mapper@2.0.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.mapper@3.0.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.mapper@4.0.so (89%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.mapperextensions@1.0.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.display.mapperextensions@1.1.so (88%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.fm@1.0.so (90%)
+ mode change 100755 => 100644
+ delete mode 100644 lib64/vendor.qti.hardware.qconfig@1.0.so
+ create mode 100644 lib64/vendor.qti.hardware.qdutils_disp@1.0.so
+ create mode 100644 lib64/vendor.qti.hardware.radio.ims@1.0.so
+ create mode 100644 lib64/vendor.qti.hardware.radio.ims@1.1.so
+ create mode 100644 lib64/vendor.qti.hardware.radio.ims@1.2.so
+ create mode 100644 lib64/vendor.qti.hardware.radio.ims@1.3.so
+ create mode 100644 lib64/vendor.qti.hardware.radio.ims@1.4.so
+ create mode 100644 lib64/vendor.qti.hardware.radio.ims@1.5.so
+ create mode 100644 lib64/vendor.qti.hardware.radio.ims@1.6.so
+ create mode 100644 lib64/vendor.qti.hardware.radio.ims@1.7.so
+ create mode 100644 lib64/vendor.qti.hardware.radio.ims@1.8.so
+ rewrite lib64/vendor.qti.hardware.servicetracker@1.0.so (92%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.servicetracker@1.1.so (91%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.servicetracker@1.2.so (91%)
+ mode change 100755 => 100644
+ delete mode 100755 lib64/vendor.qti.hardware.systemhelper@1.0.so
+ rewrite lib64/vendor.qti.hardware.vibrator.impl.so (87%)
+ mode change 100755 => 100644
+ rewrite lib64/vendor.qti.hardware.vpp@1.1.so (88%)
+ rewrite lib64/vendor.qti.hardware.vpp@1.2.so (89%)
+ delete mode 100644 lib64/vendor.qti.hardware.vpp@1.3.so
+ rewrite lib64/vendor.qti.hardware.wifi.supplicant-V1-ndk.so (96%)
+ mode change 100755 => 100644
+ delete mode 100644 lib64/vendor.qti.hardware.wifi.wificfr@1.0.so
+ rewrite lib64/vendor.qti.hardware.wifi.wifilearner@1.0.so (89%)
+ create mode 100644 lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
+ create mode 100644 lib64/vendor.qti.voiceprint@1.0.so
+ create mode 100644 lib64/vendor.xiaomi.hardware.micharge@1.0.so
+ create mode 100644 lib64/vendor.xiaomi.hardware.mimd@1.0.so
+ create mode 100644 lib64/vendor.xiaomi.hardware.misys@1.0.so
+ create mode 100644 lib64/vendor.xiaomi.hardware.misys@2.0.so
+ create mode 100644 lib64/vendor.xiaomi.hardware.misys@3.0.so
+ create mode 100644 lib64/vendor.xiaomi.hardware.misys@4.0.so
+ create mode 100644 lib64/vendor.xiaomi.hw.touchfeature@1.0.so

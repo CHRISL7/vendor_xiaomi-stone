@@ -47,6 +47,9 @@ target=`getprop ro.board.platform`
 # Override USB default composition
 #
 # If USB persist config not set, set default configuration
+
+debuggable=`getprop ro.debuggable`
+
 if [ "$(getprop persist.vendor.usb.config)" == "" -a "$(getprop ro.build.type)" != "user" ]; then
     if [ "$esoc_name" != "" ]; then
 	  setprop persist.vendor.usb.config diag,diag_mdm,qdss,qdss_mdm,serial_cdev,dpl,rmnet,adb
@@ -97,14 +100,18 @@ if [ "$(getprop persist.vendor.usb.config)" == "" -a "$(getprop ro.build.type)" 
 	              "msm8998" | "sdm660" | "apq8098_latv")
 		          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,adb
 		      ;;
-	              "monaco")
-		          setprop persist.vendor.usb.config diag,qdss,rmnet,adb
-		      ;;
 	              "sdm845" | "sdm710")
 		          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,adb
 		      ;;
-	              "msmnile" | "sm6150" | "trinket" | "lito" | "atoll" | "bengal" | "lahaina" | "holi" | "taro" | "kalama" | "crow")
-			  setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,qdss,adb
+	              "msmnile" | "sm6150" | "trinket" | "lito" | "atoll" | "bengal" | "lahaina" | "holi" | "taro" | "kalama")
+                              case "$debuggable" in
+                                  "1")
+                                          setprop persist.vendor.usb.config adb
+                                          ;;
+                                  *)
+                                          setprop persist.vendor.usb.config none
+                                          ;;
+                                  esac
 		      ;;
 	              *)
 		          setprop persist.vendor.usb.config diag,adb
@@ -141,11 +148,21 @@ esac
 
 # check configfs is mounted or not
 if [ -d /config/usb_gadget ]; then
-        usb_product=`getprop vendor.usb.product_string`;
-	vendor_model=`getprop ro.product.vendor.model`;
-	if [ "$usb_product" == "" ]; then
-		setprop vendor.usb.product_string "$vendor_model"
+	machine_type=`cat /sys/devices/soc0/machine`
+
+	# Chip ID & serial are used for unique MSM identification in Product String
+	# If not present, then omit them instead of using 0x00000000
+	msm_chipid=`cat /sys/devices/soc0/nproduct_id`;
+	if [ "$msm_chipid" != "" ]; then
+		msm_chipid_hex=`printf _CID:%04X $msm_chipid`
 	fi
+
+	msm_serial=`cat /sys/devices/soc0/serial_number`;
+	if [ "$msm_serial" != "" ]; then
+		msm_serial_hex=`printf _SN:%08X $msm_serial`
+	fi
+
+	setprop vendor.usb.product_string "$machine_type-$soc_hwplatform$msm_chipid_hex$msm_serial_hex"
 
 	# ADB requires valid iSerialNumber; if ro.serialno is missing, use dummy
 	serialnumber=`cat /config/usb_gadget/g1/strings/0x409/serialnumber 2> /dev/null`
@@ -154,6 +171,14 @@ if [ -d /config/usb_gadget ]; then
 		echo $serialno > /config/usb_gadget/g1/strings/0x409/serialnumber
 	fi
 	setprop vendor.usb.configfs 1
+fi
+
+# update product
+marketname=`getprop ro.product.marketname`
+if [ "$marketname" != "" ]; then
+    setprop vendor.usb.product_string "$marketname"
+else
+    setprop vendor.usb.product_string "$(getprop ro.product.model)"
 fi
 
 #
@@ -176,9 +201,54 @@ esac
 # Initialize UVC conifguration.
 #
 if [ -d /config/usb_gadget/g1/functions/uvc.0 ]; then
-	setprop vendor.usb.uvc.function.init 1
-fi
+	cd /config/usb_gadget/g1/functions/uvc.0
 
-if [ -d /config/usb_gadget/g1/functions/uac2.0 ]; then
-	setprop vendor.usb.uac2.function.init 1
+	echo 3072 > streaming_maxpacket
+	echo 1 > streaming_maxburst
+	mkdir control/header/h
+	ln -s control/header/h control/class/fs/
+	ln -s control/header/h control/class/ss
+
+	mkdir -p streaming/uncompressed/u/360p
+	echo "666666\n1000000\n5000000\n" > streaming/uncompressed/u/360p/dwFrameInterval
+
+	mkdir -p streaming/uncompressed/u/720p
+	echo 1280 > streaming/uncompressed/u/720p/wWidth
+	echo 720 > streaming/uncompressed/u/720p/wWidth
+	echo 29491200 > streaming/uncompressed/u/720p/dwMinBitRate
+	echo 29491200 > streaming/uncompressed/u/720p/dwMaxBitRate
+	echo 1843200 > streaming/uncompressed/u/720p/dwMaxVideoFrameBufferSize
+	echo 5000000 > streaming/uncompressed/u/720p/dwDefaultFrameInterval
+	echo "5000000\n" > streaming/uncompressed/u/720p/dwFrameInterval
+
+	mkdir -p streaming/mjpeg/m/360p
+	echo "666666\n1000000\n5000000\n" > streaming/mjpeg/m/360p/dwFrameInterval
+
+	mkdir -p streaming/mjpeg/m/720p
+	echo 1280 > streaming/mjpeg/m/720p/wWidth
+	echo 720 > streaming/mjpeg/m/720p/wWidth
+	echo 29491200 > streaming/mjpeg/m/720p/dwMinBitRate
+	echo 29491200 > streaming/mjpeg/m/720p/dwMaxBitRate
+	echo 1843200 > streaming/mjpeg/m/720p/dwMaxVideoFrameBufferSize
+	echo 5000000 > streaming/mjpeg/m/720p/dwDefaultFrameInterval
+	echo "5000000\n" > streaming/mjpeg/m/720p/dwFrameInterval
+
+	echo 0x04 > /config/usb_gadget/g1/functions/uvc.0/streaming/mjpeg/m/bmaControls
+
+	mkdir -p streaming/h264/h/960p
+	echo 1920 > streaming/h264/h/960p/wWidth
+	echo 960 > streaming/h264/h/960p/wWidth
+	echo 40 > streaming/h264/h/960p/bLevelIDC
+	echo "333667\n" > streaming/h264/h/960p/dwFrameInterval
+
+	mkdir -p streaming/h264/h/1920p
+	echo "333667\n" > streaming/h264/h/1920p/dwFrameInterval
+
+	mkdir streaming/header/h
+	ln -s streaming/uncompressed/u streaming/header/h
+	ln -s streaming/mjpeg/m streaming/header/h
+	ln -s streaming/h264/h streaming/header/h
+	ln -s streaming/header/h streaming/class/fs/
+	ln -s streaming/header/h streaming/class/hs/
+	ln -s streaming/header/h streaming/class/ss/
 fi
