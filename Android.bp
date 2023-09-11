@@ -5,6 +5,126 @@
 soong_namespace {
 }
 
+cc_prebuilt_library_shared {
+	name: "libagm",
+	owner: "xiaomi",
+	strip: {
+		none: true,
+	},
+	target: {
+		android_arm: {
+			srcs: ["proprietary/vendor/lib/libagm.so"],
+		},
+		android_arm64: {
+			srcs: ["proprietary/vendor/lib64/libagm.so"],
+		},
+	},
+	compile_multilib: "both",
+	check_elf_files: false,
+	prefer: true,
+	soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+	name: "libar-gsl",
+	owner: "xiaomi",
+	strip: {
+		none: true,
+	},
+	target: {
+		android_arm: {
+			srcs: ["proprietary/vendor/lib/libar-gsl.so"],
+		},
+		android_arm64: {
+			srcs: ["proprietary/vendor/lib64/libar-gsl.so"],
+		},
+	},
+	compile_multilib: "both",
+	check_elf_files: false,
+	prefer: true,
+	soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+	name: "libar-pal",
+	owner: "xiaomi",
+	strip: {
+		none: true,
+	},
+	target: {
+		android_arm: {
+			srcs: ["proprietary/vendor/lib/libar-pal.so"],
+		},
+		android_arm64: {
+			srcs: ["proprietary/vendor/lib64/libar-pal.so"],
+		},
+	},
+	compile_multilib: "both",
+	check_elf_files: false,
+	prefer: true,
+	soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+	name: "libats",
+	owner: "xiaomi",
+	strip: {
+		none: true,
+	},
+	target: {
+		android_arm: {
+			srcs: ["proprietary/vendor/lib/libats.so"],
+		},
+		android_arm64: {
+			srcs: ["proprietary/vendor/lib64/libats.so"],
+		},
+	},
+	compile_multilib: "both",
+	check_elf_files: false,
+	prefer: true,
+	soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+	name: "liblx-osal",
+	owner: "xiaomi",
+	strip: {
+		none: true,
+	},
+	target: {
+		android_arm: {
+			srcs: ["proprietary/vendor/lib/liblx-osal.so"],
+		},
+		android_arm64: {
+			srcs: ["proprietary/vendor/lib64/liblx-osal.so"],
+		},
+	},
+	compile_multilib: "both",
+	check_elf_files: false,
+	prefer: true,
+	soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+	name: "vendor.qti.hardware.AGMIPC@1.0-impl",
+	owner: "xiaomi",
+	strip: {
+		none: true,
+	},
+	target: {
+		android_arm: {
+			srcs: ["proprietary/vendor/lib/vendor.qti.hardware.AGMIPC@1.0-impl.so"],
+		},
+		android_arm64: {
+			srcs: ["proprietary/vendor/lib64/vendor.qti.hardware.AGMIPC@1.0-impl.so"],
+		},
+	},
+	compile_multilib: "both",
+	check_elf_files: false,
+	prefer: true,
+	soc_specific: true,
+}
+
 android_app_import {
 	name: "CACertService",
 	owner: "xiaomi",
@@ -136,24 +256,6 @@ prebuilt_etc_xml {
 	name: "manifest_android.hardware.drm-service.widevine",
 	owner: "xiaomi",
 	src: "proprietary/vendor/etc/vintf/manifest/manifest_android.hardware.drm-service.widevine.xml",
-	filename_from_src: true,
-	sub_dir: "vintf/manifest",
-	soc_specific: true,
-}
-
-prebuilt_etc_xml {
-	name: "manifest_non_qmaa",
-	owner: "xiaomi",
-	src: "proprietary/vendor/etc/vintf/manifest/manifest_non_qmaa.xml",
-	filename_from_src: true,
-	sub_dir: "vintf/manifest",
-	soc_specific: true,
-}
-
-prebuilt_etc_xml {
-	name: "manifest_non_qmaa_extn",
-	owner: "xiaomi",
-	src: "proprietary/vendor/etc/vintf/manifest/manifest_non_qmaa_extn.xml",
 	filename_from_src: true,
 	sub_dir: "vintf/manifest",
 	soc_specific: true,
